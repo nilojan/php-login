@@ -52,7 +52,7 @@
         catch(PDOException $ex) 
         { 
             // chk if any error occurs  
-            die("Failed to run query: " . $ex->getMessage()); 
+            die("Failed to run query username: " . $ex->getMessage()); 
         } 
          
         // fetch() to returns a row in an array
@@ -84,7 +84,7 @@
         } 
         catch(PDOException $ex) 
         { 
-            die("Failed to run query: " . $ex->getMessage()); 
+            die("Failed to run query email: " . $ex->getMessage()); 
         } 
          
         $row = $stmt->fetch(); 
@@ -100,12 +100,14 @@
                 username, 
                 password, 
                 salt, 
-                email 
+                email,
+				created
             ) VALUES ( 
                 :username, 
                 :password, 
                 :salt, 
-                :email 
+                :email,
+				:created
             ) 
         "; 
          
@@ -140,7 +142,7 @@
         catch(PDOException $ex) 
         { 
             // chk if there any error  
-            die("Failed to run query: " . $ex->getMessage()); 
+            die("Failed to run query final action: " . $ex->getMessage()); 
         } 
          
         // redirect to login if all fine 
